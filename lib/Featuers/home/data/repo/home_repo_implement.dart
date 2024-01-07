@@ -3,6 +3,7 @@ import 'package:book_app/Featuers/home/data/repo/home_repo.dart';
 import 'package:book_app/core/errors/failure.dart';
 import 'package:book_app/core/utils/api_service.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 class HomeRepoImplement implements HomeRepo {
   final ApiService apiService;
@@ -18,14 +19,17 @@ class HomeRepoImplement implements HomeRepo {
       for (var item in data['items']) {
         books.add(BookModel.fromJson(item));
       }
+      return right(books);
     } on Exception catch (e) {
-      // TODO
+      if (e is DioException) {
+        return left(ServerFailure.DioException(e));
+      }
+      return left(ServerFailure(e.toString()));
     }
   }
 
   @override
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBook() {
-    // TODO: implement fetchFeaturedBook
     throw UnimplementedError();
   }
 }
