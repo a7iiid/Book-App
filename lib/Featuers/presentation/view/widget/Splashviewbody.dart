@@ -1,6 +1,4 @@
-import 'package:book_app/Featuers/home/presentation/views/home_view.dart';
 import 'package:book_app/core/utils/constants/assets.dart';
-import 'package:book_app/core/utils/constants/constant.dart';
 import 'package:book_app/core/utils/constants/route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

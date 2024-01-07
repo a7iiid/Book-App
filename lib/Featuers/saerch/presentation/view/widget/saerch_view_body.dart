@@ -1,8 +1,8 @@
-import 'package:book_app/Featuers/home/presentation/views/widget/list_view_best_seller_item.dart';
 import 'package:book_app/core/utils/style.dart';
 import 'package:flutter/material.dart';
 
 import 'custom_saerch_feild.dart';
+import 'saerch_lest_view_result.dart';
 
 class SaerchViewBody extends StatelessWidget {
   const SaerchViewBody({super.key});
@@ -30,25 +30,6 @@ class SaerchViewBody extends StatelessWidget {
           SaerchLestViewResult()
         ],
       ),
-    );
-  }
-}
-
-class SaerchLestViewResult extends StatelessWidget {
-  const SaerchLestViewResult({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-          padding: EdgeInsets.zero,
-          itemCount: 10,
-          itemBuilder: (context, index) {
-            return const Padding(
-              padding: EdgeInsets.symmetric(vertical: 10),
-              child: BookListViewItem(),
-            );
-          }),
     );
   }
 }
