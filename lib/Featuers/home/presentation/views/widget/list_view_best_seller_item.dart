@@ -18,14 +18,14 @@ class ListViewBestSeller extends StatelessWidget {
         itemBuilder: (context, index) {
           return const Padding(
             padding: EdgeInsets.symmetric(vertical: 10),
-            child: ListViewBestSellerItem(),
+            child: BookListViewItem(),
           );
         });
   }
 }
 
-class ListViewBestSellerItem extends StatelessWidget {
-  const ListViewBestSellerItem({super.key});
+class BookListViewItem extends StatelessWidget {
+  const BookListViewItem({super.key});
 
   @override
   Widget build(BuildContext context) {
