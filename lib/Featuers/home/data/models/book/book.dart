@@ -28,7 +28,7 @@ class BookModel extends Equatable {
     this.searchInfo,
   });
 
-  factory BookModel.fromMap(Map<String, dynamic> data) => BookModel(
+  factory BookModel.fromMap(Map<dynamic, dynamic> data) => BookModel(
         kind: data['kind'] as String?,
         id: data['id'] as String?,
         etag: data['etag'] as String?,
@@ -62,7 +62,7 @@ class BookModel extends Equatable {
   ///
   /// Parses the string and returns the resulting Json object as [BookModel].
   factory BookModel.fromJson(String data) {
-    return BookModel.fromMap(json.decode(data) as Map<String, dynamic>);
+    return BookModel.fromMap(json.decode(data) as Map<dynamic, dynamic>);
   }
 
   /// `dart:convert`

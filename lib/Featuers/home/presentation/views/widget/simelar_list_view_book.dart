@@ -13,9 +13,11 @@ class SimelarListViewBook extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return CustomListViewItem(
+              imageUrl:
+                  'https://cdn.pixabay.com/photo/2022/01/11/21/48/link-6931554_1280.png',
               borderRadius: const BorderRadius.all(
-            Radius.circular(9),
-          ));
+                Radius.circular(9),
+              ));
         },
       ),
     );

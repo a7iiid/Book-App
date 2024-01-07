@@ -1,26 +1,43 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:book_app/Featuers/home/presentation/manger/newest_book/newest_book_cubit.dart';
+import 'package:book_app/Featuers/home/presentation/views/widget/custom_error_widget.dart';
+import 'package:book_app/Featuers/home/presentation/views/widget/custom_state_loading.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:book_app/core/utils/constants/assets.dart';
 import 'package:book_app/core/utils/constants/route.dart';
 import 'package:book_app/core/utils/style.dart';
 
-class ListViewBestSeller extends StatelessWidget {
-  const ListViewBestSeller({super.key});
+class ListViewNewst extends StatelessWidget {
+  ListViewNewst({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        padding: EdgeInsets.zero,
-        physics: NeverScrollableScrollPhysics(),
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10),
-            child: BookListViewItem(),
+    return BlocBuilder<NewestBookCubit, NewestBookState>(
+      builder: (context, state) {
+        if (state is NewestBookFailure) {
+          return CustomErrorWidget(
+            ErrorMessages: state.error,
           );
-        });
+        }
+        if (state is NewestBookSuccess) {
+          return ListView.builder(
+              padding: EdgeInsets.zero,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: BookListViewItem(),
+                );
+              });
+        } else {
+          return const CustomStateLoading();
+        }
+      },
+    );
   }
 }
 

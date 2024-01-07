@@ -1,4 +1,4 @@
-import 'package:book_app/Featuers/home/presentation/views/widget/list_view_best_seller_item.dart';
+import 'package:book_app/Featuers/home/presentation/views/widget/list_view_newest.dart';
 import 'package:flutter/material.dart';
 
 class SaerchLestViewResult extends StatelessWidget {

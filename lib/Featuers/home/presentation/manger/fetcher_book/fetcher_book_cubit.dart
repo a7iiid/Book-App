@@ -10,8 +10,7 @@ part 'fetcher_book_state.dart';
 class FetcherBookCubit extends Cubit<FetcherBookState> {
   FetcherBookCubit(this.homeRepo) : super(FetcherBookInitial());
 
-  static FetcherBookCubit get(context) =>
-      BlocProvider.of<FetcherBookCubit>(context);
+  static get(context) => BlocProvider.of<FetcherBookCubit>(context);
 
   final HomeRepo homeRepo;
 

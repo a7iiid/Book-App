@@ -1,5 +1,5 @@
 import 'package:book_app/Featuers/home/presentation/views/widget/custom_listview_item.dart';
-import 'package:book_app/Featuers/home/presentation/views/widget/list_view_best_seller_item.dart';
+import 'package:book_app/Featuers/home/presentation/views/widget/list_view_newest.dart';
 import 'package:book_app/core/utils/style.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +25,9 @@ class BookDetilsBody extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(
                       horizontal: MediaQuery.sizeOf(context).width * .18),
-                  child: CustomListViewItem(),
+                  child: CustomListViewItem(
+                      imageUrl:
+                          'https://cdn.pixabay.com/photo/2022/01/11/21/48/link-6931554_1280.png'),
                 ),
                 const SizedBox(height: 40),
                 SizedBox(

@@ -11,8 +11,7 @@ class NewestBookCubit extends Cubit<NewestBookState> {
 
   final HomeRepo homeRepo;
 
-  static NewestBookCubit get(context) =>
-      BlocProvider.of<NewestBookCubit>(context);
+  static get(context) => BlocProvider.of<NewestBookCubit>(context);
 
   Future<void> fetchNewestdBooks() async {
     emit(NewestBookLoading());

@@ -46,7 +46,7 @@ class VolumeInfo extends Equatable {
 
   factory VolumeInfo.fromMap(Map<String, dynamic> data) => VolumeInfo(
         title: data['title'] as String?,
-        authors: data['authors'] as List<String>?,
+        authors: (data['authors'] as List<dynamic>?)?.cast<String>(),
         publisher: data['publisher'] as String?,
         industryIdentifiers: (data['industryIdentifiers'] as List<dynamic>?)
             ?.map((e) => IndustryIdentifier.fromMap(e as Map<String, dynamic>))
