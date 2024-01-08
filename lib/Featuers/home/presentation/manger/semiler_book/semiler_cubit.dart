@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:book_app/Featuers/home/data/models/book/book.dart';
+import 'package:book_app/core/models/book/book.dart';
 import 'package:book_app/Featuers/home/data/repo/home_repo.dart';
 import 'package:book_app/Featuers/home/presentation/manger/newest_book/newest_book_cubit.dart';
 import 'package:equatable/equatable.dart';

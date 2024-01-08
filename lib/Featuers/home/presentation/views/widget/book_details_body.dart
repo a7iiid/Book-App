@@ -2,7 +2,7 @@
 import 'package:book_app/core/utils/constants/constant.dart';
 import 'package:flutter/material.dart';
 
-import 'package:book_app/Featuers/home/data/models/book/book.dart';
+import 'package:book_app/core/models/book/book.dart';
 import 'package:book_app/Featuers/home/presentation/views/widget/custom_listview_item.dart';
 import 'package:book_app/Featuers/home/presentation/views/widget/list_view_newest.dart';
 import 'package:book_app/core/utils/style.dart';
@@ -42,6 +42,7 @@ class BookDetilsBody extends StatelessWidget {
                     child: Text(
                       '${bookdetails!.volumeInfo!.title}',
                       style: Style.textstyle30,
+                      textAlign: TextAlign.center,
                     ),
                   ),
                   const SizedBox(height: 6),
@@ -50,6 +51,7 @@ class BookDetilsBody extends StatelessWidget {
                     child: Text(
                       '${bookdetails!.volumeInfo!.authors![0]}',
                       style: Style.textstyle14.copyWith(fontSize: 18),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                   const SizedBox(height: 18),

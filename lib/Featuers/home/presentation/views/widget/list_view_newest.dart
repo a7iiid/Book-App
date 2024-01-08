@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:book_app/Featuers/home/data/models/book/book.dart';
+import 'package:book_app/core/models/book/book.dart';
 import 'package:book_app/Featuers/home/presentation/manger/newest_book/newest_book_cubit.dart';
 import 'package:book_app/Featuers/home/presentation/views/widget/custom_error_widget.dart';
 import 'package:book_app/Featuers/home/presentation/views/widget/custom_state_loading.dart';
