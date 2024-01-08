@@ -10,6 +10,7 @@ class SaerchLestViewResult extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SearchCubit, SearchState>(
       builder: (context, state) {
+        print(state);
         if (state is SearchSuccess) {
           return Expanded(
             child: ListView.builder(
@@ -22,6 +23,9 @@ class SaerchLestViewResult extends StatelessWidget {
                   );
                 }),
           );
+        }
+        if (state is SearchFailuer) {
+          return ErrorWidget(state.msgError);
         } else {
           return Text('data');
         }

@@ -89,6 +89,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.18.0"
+  color_observer_logger:
+    dependency: "direct main"
+    description:
+      name: color_observer_logger
+      sha256: "3affeac235fbc2bfc44251118cb5902cdff45331c62c87511af3f2cd2ebbef8e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.8"
   crypto:
     dependency: transitive
     description:

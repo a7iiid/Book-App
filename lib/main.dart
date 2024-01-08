@@ -1,3 +1,4 @@
+import 'package:book_app/BlocObserver.dart';
 import 'package:book_app/Featuers/home/presentation/manger/fetcher_book/fetcher_book_cubit.dart';
 import 'package:book_app/Featuers/home/presentation/manger/newest_book/newest_book_cubit.dart';
 import 'package:book_app/core/utils/constants/constant.dart';
@@ -6,6 +7,8 @@ import 'package:book_app/core/utils/constants/route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
+  Bloc.observer = MyBlocObserver();
+
   runApp(BookApp());
 }
 

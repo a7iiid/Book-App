@@ -13,8 +13,7 @@ class SaerchView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          SearchCubit(SearchRepoImplement(ApiService(Dio())))..searchrepo,
+      create: (context) => SearchCubit(SearchRepoImplement(ApiService(Dio()))),
       child: const Scaffold(
         body: SafeArea(child: SaerchViewBody()),
       ),
