@@ -11,16 +11,21 @@ class CustomListViewItem extends StatelessWidget {
   final BorderRadius? borderRadius;
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: borderRadius ?? BorderRadius.circular(16),
-      child: AspectRatio(
-        aspectRatio: .7,
-        child: CachedNetworkImage(
-          imageUrl: imageUrl,
-          fit: BoxFit.fill,
-          progressIndicatorBuilder: (context, url, downloadProgress) =>
-              CircularProgressIndicator(value: downloadProgress.progress),
-          errorWidget: (context, url, error) => const Icon(Icons.error),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 7.5),
+      child: ClipRRect(
+        borderRadius: borderRadius ?? BorderRadius.circular(16),
+        child: AspectRatio(
+          aspectRatio: .7,
+          child: CachedNetworkImage(
+            imageUrl: imageUrl,
+            fit: BoxFit.fill,
+            progressIndicatorBuilder: (context, url, downloadProgress) =>
+                Center(
+                    child: CircularProgressIndicator(
+                        value: downloadProgress.progress)),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
+          ),
         ),
       ),
     );

@@ -1,11 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:book_app/Featuers/home/presentation/manger/newest_book/newest_book_cubit.dart';
-import 'package:book_app/Featuers/home/presentation/views/widget/custom_error_widget.dart';
-import 'package:book_app/Featuers/home/presentation/views/widget/custom_state_loading.dart';
+import 'package:book_app/core/utils/constants/constant.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:book_app/Featuers/home/data/models/book/book.dart';
+import 'package:book_app/Featuers/home/presentation/manger/newest_book/newest_book_cubit.dart';
+import 'package:book_app/Featuers/home/presentation/views/widget/custom_error_widget.dart';
+import 'package:book_app/Featuers/home/presentation/views/widget/custom_state_loading.dart';
 import 'package:book_app/core/utils/constants/assets.dart';
 import 'package:book_app/core/utils/constants/route.dart';
 import 'package:book_app/core/utils/style.dart';
@@ -26,11 +29,11 @@ class ListViewNewst extends StatelessWidget {
           return ListView.builder(
               padding: EdgeInsets.zero,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: 10,
+              itemCount: state.books.length,
               itemBuilder: (context, index) {
-                return const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
-                  child: BookListViewItem(),
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: BookListViewItem(book: state.books[index]),
                 );
               });
         } else {
@@ -42,12 +45,16 @@ class ListViewNewst extends StatelessWidget {
 }
 
 class BookListViewItem extends StatelessWidget {
-  const BookListViewItem({super.key});
-
+  const BookListViewItem({
+    Key? key,
+    required this.book,
+  }) : super(key: key);
+  final BookModel book;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        bookdetails = book;
         GoRouter.of(context).push(routes.kDetailsView);
       },
       child: SizedBox(
@@ -56,24 +63,21 @@ class BookListViewItem extends StatelessWidget {
           padding: const EdgeInsets.only(right: 40),
           child: Row(
             children: [
-              AspectRatio(
-                aspectRatio: 2.8 / 4,
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 7),
-                  decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage(
-                            Assets.imagesLogo,
-                          ),
-                          fit: BoxFit.fill),
-                      color: (Colors.white),
-                      borderRadius: BorderRadius.all(Radius.circular(8))),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: AspectRatio(
+                  aspectRatio: 2.8 / 4,
+                  child: CachedNetworkImage(
+                      fit: BoxFit.fill,
+                      imageUrl: book.volumeInfo!.imageLinks!.smallThumbnail!),
                 ),
               ),
               const SizedBox(
                 width: 30,
               ),
-              TextListViewItem()
+              TextListViewItem(
+                book: book,
+              )
             ],
           ),
         ),
@@ -84,8 +88,10 @@ class BookListViewItem extends StatelessWidget {
 
 class TextListViewItem extends StatelessWidget {
   const TextListViewItem({
-    super.key,
-  });
+    Key? key,
+    required this.book,
+  }) : super(key: key);
+  final BookModel book;
 
   @override
   Widget build(BuildContext context) {
@@ -95,18 +101,18 @@ class TextListViewItem extends StatelessWidget {
         children: [
           SizedBox(
             width: MediaQuery.sizeOf(context).width * .5,
-            child: const Text(
-              'The Jango Book',
+            child: Text(
+              '${book.volumeInfo!.title}',
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: Style.titleListViewBolde22,
             ),
           ),
           const SizedBox(height: 3),
-          const Opacity(
+          Opacity(
             opacity: .7,
             child: Text(
-              'Rudyard Kipling',
+              book.volumeInfo!.authors![0],
               style: Style.textstyle14,
             ),
           ),
@@ -115,7 +121,7 @@ class TextListViewItem extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  '19.99 €',
+                  'Free',
                   style: Style.textstyle20.copyWith(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
@@ -135,6 +141,7 @@ class RatingBook extends StatelessWidget {
     Key? key,
     this.mainAxisAlignment = MainAxisAlignment.start,
   }) : super(key: key);
+
   final MainAxisAlignment mainAxisAlignment;
   @override
   Widget build(BuildContext context) {
@@ -149,7 +156,7 @@ class RatingBook extends StatelessWidget {
           width: 6.3,
         ),
         Text(
-          '4.8',
+          '0',
           style: Style.textstyle16,
         ),
         SizedBox(
@@ -158,7 +165,7 @@ class RatingBook extends StatelessWidget {
         Opacity(
           opacity: .5,
           child: Text(
-            '(2675)',
+            '(0)',
             style: Style.textstyle14,
           ),
         )
