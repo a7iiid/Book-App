@@ -20,7 +20,7 @@ class SaerchViewBody extends StatelessWidget {
           Align(
             alignment: Alignment.bottomLeft,
             child: Text(
-              "Best Seller",
+              "Search Result",
               style: Style.titlemedium18,
             ),
           ),

@@ -26,6 +26,7 @@ class SimelarListViewBook extends StatelessWidget {
               itemCount: state.books.length - 1,
               itemBuilder: (context, index) {
                 return CustomListViewItem(
+                    book: state.books[index],
                     imageUrl:
                         '${state.books[index].volumeInfo!.imageLinks?.thumbnail}',
                     borderRadius: const BorderRadius.all(
